@@ -45,8 +45,18 @@ get "/news" do
     @current_temp= @forecast ["currently"]["temperature"] #forecast is the first hash, access the hash within using [] and calling out variable you want in ""
     @current_conditions = @forecast["currently"] ["summary"]
 
-    for daily_forecast in @forecast["daily"]["data"] #creates an array call daily_forecast
-        puts "A high temperature of #{daily_forecast["temperatureHigh"]} and #{daily_forecast["summary"]}."
+    # @daily_temp = Array.new
+    # @daily_summ = Array.new
+
+    # i=0
+    # for daily in @forecast["daily"]["data"] do  #creates an array call daily
+    #     @daily_temp[i] = daily["temperaturHigh"]
+    #     @daily_summ[i] = daily["summary"]
+    #     i = i + 1
+    # end
+
+    for day in @forecast["daily"]["data"]
+    puts "A high temperature of #{day["temperatureHigh"]} and #{day["summary"]}."
     end
 
     view "news"
