@@ -17,8 +17,12 @@ news = HTTParty.get(url).parsed_response.to_hash
 headline_1 = news["articles"][2]["title"]
 headline_1_url = news["articles"][2]["url"]
 
-puts headline_1
-puts headline_1_url
+# puts headline_1
+# puts headline_1_url
+
+    #"The current temperature is #{current_temp} and conditions are #{current_conditions}"
+    # </div>
+    
 
 get "/" do
   # show a view that asks for the location
@@ -29,19 +33,25 @@ get "/news" do
   # do everything else
 
     results = Geocoder.search(params["input"])
+
     @lat_long = results.first.coordinates # [lat, long] array 
     #"#{lat_long[0]} #{lat_long[1]}" #writes the lat and long points to the screen
     #"#{lat_long}"
     @lat = @lat_long[0]
     @long = @lat_long[1]
     #city = results[,display_name]   
-    forecast = ForecastIO.forecast(@lat,@long).to_hash
+    @forecast = ForecastIO.forecast(@lat,@long).to_hash
         
-    current_temp= forecast ["currently"]["temperature"] #forecast is the first hash, access the hash within using [] and calling out variable you want in ""
-    current_conditions = forecast["currently"] ["summary"]
+    @current_temp= @forecast ["currently"]["temperature"] #forecast is the first hash, access the hash within using [] and calling out variable you want in ""
+    @current_conditions = @forecast["currently"] ["summary"]
 
-    "The current temperature is #{current_temp} and conditions are #{current_conditions}"
-    # </div>
+    for daily_forecast in @forecast["daily"]["data"] #creates an array call daily_forecast
+        puts "A high temperature of #{daily_forecast["temperatureHigh"]} and #{daily_forecast["summary"]}."
+    end
+
+    view "news"
+    #"The current temperature is #{current_temp} and conditions are #{current_conditions}"
+    # # </div>
     
     # </div>
     #"In Evanston, it is currently #{current_temp} and #{current_conditions}"
