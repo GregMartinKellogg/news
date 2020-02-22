@@ -14,8 +14,8 @@ news = HTTParty.get(url).parsed_response.to_hash
 # news is now a Hash you can pretty print (pp) and parse for your output
 #pp news
 
-headline_1 = news["articles"][2]["title"]
-headline_1_url = news["articles"][2]["url"]
+@headline_1 = news["articles"][2]["title"]
+@headline_1_url = news["articles"][2]["url"]
 
 # puts headline_1
 # puts headline_1_url
@@ -45,19 +45,23 @@ get "/news" do
     @current_temp= @forecast ["currently"]["temperature"] #forecast is the first hash, access the hash within using [] and calling out variable you want in ""
     @current_conditions = @forecast["currently"] ["summary"]
 
+    @headline_1 = news["articles"][2]["title"]
+    @headline_1_url = news["articles"][2]["url"]
+
     # @daily_temp = Array.new
     # @daily_summ = Array.new
 
     # i=0
     # for daily in @forecast["daily"]["data"] do  #creates an array call daily
-    #     @daily_temp[i] = daily["temperaturHigh"]
+    #     @daily_temp[i] = @forecast["daily"]["temperaturHigh"]
     #     @daily_summ[i] = daily["summary"]
     #     i = i + 1
     # end
 
-    for day in @forecast["daily"]["data"]
-    puts "A high temperature of #{day["temperatureHigh"]} and #{day["summary"]}."
-    end
+
+    # for day in @forecast["daily"]["data"]
+    # puts "A high temperature of #{day["temperatureHigh"]} and #{day["summary"]}."
+    # end
 
     view "news"
     #"The current temperature is #{current_temp} and conditions are #{current_conditions}"
