@@ -30,14 +30,24 @@
     </div>
 
     <div class="container mt-5">
-      <h1>News!</h1>
+        <h3>Tomorrow's high will be <%=@forecast_temp1%> and will have <%=@forecast_conditions1%></h3>
+        <div>
+        <h3>Followed by a high of <%=@forecast_temp2%> and <%=@forecast_temp3%> on the following days</h3>
+        
+      </form>
     </div>
 
     <div class="container mt-5">
-        <h4><%=@headline_1%></h4>
-        <h5>
-        <a href="<%=@headline_1_url%>"> <%=@headline_1_url%> </a>
-        </h5>
+      <h1>News!</h1>
+    </div>
+
+    <div class="row mt-6">
+        <div class="col-sm-6 text-center">
+            <p><img src="<%=@headline_1_photo%>" width="200" height="300"></p>
+            <h5><%=@headline_1%></h5>
+            <a href="<%=@headline_1_url%>"> <%=@headline_1_url%> </a>
+        </div>
+
    
     </div>
     
