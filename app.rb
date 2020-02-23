@@ -43,22 +43,26 @@ get "/news" do
     #tomorrow's weather summary
     @forecast_conditions1 = @forecast["daily"]["data"][1]["summary"]
 
+    #News headline assignment
     @headline_1 = news["articles"][0]["title"]
     @headline_1_url = news["articles"][0]["url"]
     @headline_1_photo = news["articles"][0]["urlToImage"]
 
-
     @headline_2 = news["articles"][1]["title"]
     @headline_2_url = news["articles"][1]["url"]
+    @headline_2_photo = news["articles"][1]["urlToImage"]
 
     @headline_3 = news["articles"][2]["title"]
     @headline_3_url = news["articles"][2]["url"]
+    @headline_3_photo = news["articles"][2]["urlToImage"]
 
-    @headline_3 = news["articles"][3]["title"]
-    @headline_3_url = news["articles"][3]["url"]
+    @headline_4 = news["articles"][3]["title"]
+    @headline_4_url = news["articles"][3]["url"]
+    @headline_4_photo = news["articles"][3]["urlToImage"]
 
-    @headline_4 = news["articles"][4]["title"]
-    @headline_4_url = news["articles"][4]["url"]
+    @headline_5 = news["articles"][4]["title"]
+    @headline_5_url = news["articles"][4]["url"]
+    @headline_5_photo = news["articles"][4]["urlToImage"]
 
     # @daily_temp = Array.new
     # @daily_summ = Array.new
